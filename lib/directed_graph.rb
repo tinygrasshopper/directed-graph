@@ -1,5 +1,3 @@
 require "directed_graph/version"
+require "directed_graph/directed_graph"
 
-module DirectedGraph
-  # Your code goes here...
-end
