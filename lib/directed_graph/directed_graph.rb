@@ -1,2 +1,0 @@
-class DirectedGraph
-end
