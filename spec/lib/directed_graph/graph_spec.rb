@@ -18,7 +18,7 @@ describe DirectedGraph::Graph do
     before(:each) { subject.edge from: :A, to: :B }
     it { should_not be_empty }
 
-    its(:vertices) { should == [:A, :B].to_set }
-    its(:edges) { should == [DirectedGraph::Edge.new(:A, :B)].to_set }
+    its(:vertices) { should == [:A, :B]}
+    its(:edges) { should == [DirectedGraph::Edge.new(:A, :B)]}
   end
 end

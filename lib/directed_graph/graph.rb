@@ -8,8 +8,8 @@ module DirectedGraph
 
 
     def initialize
-      @vertices = Set.new
-      @edges = Set.new
+      @vertices = []
+      @edges = []
     end
 
     def empty?
