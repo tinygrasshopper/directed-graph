@@ -17,9 +17,20 @@ module DirectedGraph
     end  
 
     def edge(relation)
-      @vertices << relation[:from]
-      @vertices << relation[:to]
-      @edges << Edge.new(relation[:from], relation[:to])
+      [relation[:to]].flatten.each do |to|
+        add(relation[:from], to)
+      end
+    end
+
+    private
+    def add(from, to)
+      vertex(from)
+      vertex(to)
+      @edges << Edge.new(from, to)
+    end
+
+    def vertex(vertex)
+      @vertices << vertex unless @vertices.include? vertex
     end
   end
 end

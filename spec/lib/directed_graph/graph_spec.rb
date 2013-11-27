@@ -15,10 +15,27 @@ describe DirectedGraph::Graph do
   end
 
   context 'adding an edge' do
-    before(:each) { subject.edge from: :A, to: :B }
+    before { subject.edge from: :A, to: :B }
     it { should_not be_empty }
 
     its(:vertices) { should == [:A, :B]}
     its(:edges) { should == [DirectedGraph::Edge.new(:A, :B)]}
+  end
+
+  context 'adding multiple edges' do
+    before { 
+      subject.edge from: :A, to: :B 
+      subject.edge from: :A, to: :C 
+    }
+    it { should_not be_empty }
+
+    its(:vertices) { should == [:A, :B, :C]}
+    its(:edges) { should == [DirectedGraph::Edge.new(:A, :B), DirectedGraph::Edge.new(:A, :C)]}
+  end
+  context 'adding an edge to multple nodes' do
+    before {subject.edge from: :A, to: [:C, :D]}
+
+    its(:vertices) { should == [:A, :C, :D] }
+    its(:edges) {should == [DirectedGraph::Edge.new(:A, :C), DirectedGraph::Edge.new(:A, :D)]}
   end
 end
