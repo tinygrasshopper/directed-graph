@@ -10,6 +10,10 @@ module DirectedGraph
       self.from == other.from && self.to == other.to
     end
 
+    def from? vertex
+      @from == vertex
+    end
+
     def eql? other
       raise :e
       self == other

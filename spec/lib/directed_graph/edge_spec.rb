@@ -13,4 +13,10 @@ describe DirectedGraph::Edge do
     it { should_not == DirectedGraph::Edge.new(:B, :A)}
     it { should_not == DirectedGraph::Edge.new(:C, :D)}
   end
+
+  describe '#from?' do
+    subject { DirectedGraph::Edge.new :A, :B}
+    it { should be_from :A}
+    it { should_not be_from :B}
+  end
 end

@@ -22,6 +22,10 @@ module DirectedGraph
       end
     end
 
+    def cyclic?
+      false
+    end
+
     private
     def add(from, to)
       vertex(from)
