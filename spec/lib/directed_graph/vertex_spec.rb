@@ -14,9 +14,23 @@ describe DirectedGraph::Vertex do
     it {should_not == "" }
   end
 
-  describe 'outgoing edges' do
-    before { graph.edge(from: :A, to: :B)}
+  describe 'edges' do
+    before { 
+      graph.edge(from: :A, to: :B)
+      graph.edge(from: :C, to: :A)
+    }
 
     its(:outgoing_edges) { should == [DirectedGraph::Edge.new(:A, :B)] }
+    its(:incomming_edges) { should == [DirectedGraph::Edge.new(:C, :A)] }
+  end
+
+  describe 'neighbours' do
+    before { 
+      graph.edge(from: :A, to: :B)
+      graph.edge(from: :A, to: :D)
+      graph.edge(from: :C, to: :A)
+    }
+
+    its(:neighbours) {should =~ [graph.vertex(:B), graph.vertex(:D)]}
   end
 end

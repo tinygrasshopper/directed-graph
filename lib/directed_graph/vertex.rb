@@ -6,8 +6,16 @@ module DirectedGraph
       @payload = payload
     end
 
+    def incomming_edges
+      graph.edges.select {|e| e.to? payload }
+    end
+
     def outgoing_edges
       graph.edges.select {|e| e.from? payload }
+    end
+
+    def neighbours
+      self.outgoing_edges.collect {|e| graph.vertex(e.to)}
     end
 
     def == other
